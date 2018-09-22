@@ -80,9 +80,9 @@ initMap = () => {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1Ijoia21vbHdhbmkiLCJhIjoiY2ptNXZwZWpxMHlscDNrcXBzOGJwNHg2cyJ9.pRmt1S24hZTIm6gsVfQZJA',
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a tabindex="-1" href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a tabindex="-1" href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a tabindex="-1" href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
 
@@ -157,11 +157,13 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.role = "link";
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.alt = 'The main cuisine at ' + restaurant.name + ' is ' + restaurant.cuisine_type;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  imgae.role = "presentation";
   li.append(image);
 
   const name = document.createElement('h1');
